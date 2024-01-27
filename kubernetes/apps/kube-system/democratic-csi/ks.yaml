@@ -5,8 +5,6 @@ kind: Kustomization
 metadata:
   name: cluster-apps-democratic-csi-iscsi
   namespace: flux-system
-  labels:
-    substitution.flux.home.arpa/disabled: "true"
 spec:
   path: ./kubernetes/apps/kube-system/democratic-csi/iscsi
   prune: true
@@ -24,8 +22,6 @@ kind: Kustomization
 metadata:
   name: cluster-apps-democratic-csi-nfs
   namespace: flux-system
-  labels:
-    substitution.flux.home.arpa/disabled: "true"
 spec:
   path: ./kubernetes/apps/kube-system/democratic-csi/nfs
   prune: true
