@@ -79,15 +79,9 @@ spec:
     ingress:
       main:
         enabled: false
-<<<<<<< HEAD
-      internal:
-        enabled: true
-        className: internal
-=======
       external:
         enabled: true
         className: external
->>>>>>> 0e0135c (Add plex)
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
