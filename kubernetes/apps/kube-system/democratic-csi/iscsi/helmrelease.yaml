@@ -43,9 +43,7 @@ spec:
         # zfs send/received instead of zfs cloned
         # detachedVolumesFromVolumes: "false"
 
-      mountOptions:
-      - noatime
-      - nfsvers=4
+      mountOptions: []
       secrets:
         provisioner-secret:
         controller-publish-secret:
