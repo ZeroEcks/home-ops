@@ -19,6 +19,10 @@ spec:
       # should be globally unique for a given cluster
       name: "org.democratic-csi.nfs"
 
+    controller:
+      podAnnotations:
+        secret.reloader.stakater.com/reload: nfs-driver-config-secret
+
     # add note here about volume expansion requirements
     storageClasses:
     - name: freenas-nfs-csi
