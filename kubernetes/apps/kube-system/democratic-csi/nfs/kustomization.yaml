@@ -4,5 +4,4 @@ kind: Kustomization
 namespace: kube-system
 resources:
   - ./helmrelease.yaml
-  - ./nfs-driver-config-secret.sops.yaml
   - ./secret.sops.yaml
