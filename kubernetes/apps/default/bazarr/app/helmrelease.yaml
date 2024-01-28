@@ -38,10 +38,7 @@ spec:
               tag: 1.4.0@sha256:c81c4d9cbec093d5a999cfa3cd1af01d3f00d6292d6f5c33608510cef0ed83c7
             env:
               TZ: ${TIMEZONE}
-              BAZARR__INSTANCE_NAME: Bazarr
-              BAZARR__PORT: &port 6767
-              BAZARR__LOG_LEVEL: info
-              BAZARR__AUTHENTICATION_METHOD: External
+              BAZARR__PORT: &port 6767 # not actually used... but i like the template
             resources:
               requests:
                 cpu: 10m
@@ -54,7 +51,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /ping
+                    path: /api
                     port: *port
                   initialDelaySeconds: 0
                   periodSeconds: 10
