@@ -9,6 +9,7 @@ resources:
   - ./recyclarr/ks.yaml
   - ./bazarr/ks.yaml
   - ./prowlarr/ks.yaml
+  - ./overseer/ks.yaml
 #  - ./qbittorrent/ks.yaml
 #  - ./sabnzbd/ks.yaml
 #  - ./plex/ks.yaml
