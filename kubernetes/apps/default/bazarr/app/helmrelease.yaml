@@ -98,8 +98,8 @@ spec:
         size: 1Gi
 
       media:
-        enabled: false
+        enabled: true
         type: nfs
-        server: ${SECRET_NFS_SERVER}
+        server: ${SECRET_NFS_SERVER} # poke
         path: ${SECRET_NFS_MEDIA}
         mountPath: /media
