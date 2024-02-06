@@ -95,7 +95,7 @@ spec:
 
     persistence:
       config:
-        enabled: false
+        enabled: true
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         storageClass: freenas-iscsi-csi
