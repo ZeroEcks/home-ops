@@ -15,4 +15,5 @@ resources:
   - ./flare-solverr/ks.yaml
   - ./qbittorrent/ks.yaml
   - ./sabnzbd/ks.yaml
+  - ./cyberchef/ks.yaml
   - ./plex/ks.yaml
