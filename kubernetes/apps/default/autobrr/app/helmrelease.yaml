@@ -3,10 +3,10 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: bazarr
+  name: autobrr
   namespace: default
 spec:
-  interval: 15m
+  interval: 30m
   chart:
     spec:
       chart: app-template
@@ -15,9 +15,7 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-  maxHistory: 3
   install:
-    createNamespace: true
     remediation:
       retries: 3
   upgrade:
@@ -29,30 +27,25 @@ spec:
   values:
     controllers:
       main:
-        type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
           main:
             image:
-              repository: ghcr.io/onedr0p/bazarr
-              tag: 1.4.1@sha256:4a9584435db5881306fa477115363db0ff79a3c70c7f67b5fe0c2e62978252a5
+              repository: ghcr.io/autobrr/autobrr
+              tag: v1.36.0@sha256:14eaf6809f431cd38afdfa3e498e01e88b9a86a54ea9ecb8ae608d48d5aa81f0
             env:
-              TZ: ${TIMEZONE}
-              BAZARR__PORT: &port 6767 # not actually used... but i like the template
-            resources:
-              requests:
-                cpu: 10m
-                memory: 250Mi
-              limits:
-                memory: 2000Mi
+              AUTOBRR__CHECK_FOR_UPDATES: "false"
+              AUTOBRR__HOST: 0.0.0.0
+              AUTOBRR__PORT: &port 80
+              AUTOBRR__LOG_LEVEL: DEBUG
             probes:
               liveness: &probes
                 enabled: true
                 custom: true
                 spec:
                   httpGet:
-                    path: /api
+                    path: /api/healthz/liveness
                     port: *port
                   initialDelaySeconds: 0
                   periodSeconds: 10
@@ -61,6 +54,15 @@ spec:
               readiness: *probes
               startup:
                 enabled: false
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 256Mi
         pod:
           securityContext:
             runAsUser: 568
@@ -75,8 +77,6 @@ spec:
             port: *port
     ingress:
       main:
-        enabled: false
-      internal:
         enabled: true
         className: internal
         hosts:
@@ -89,7 +89,6 @@ spec:
         tls:
           - hosts:
               - *host
-
     persistence:
       config:
         enabled: true
@@ -97,10 +96,3 @@ spec:
         accessMode: ReadWriteOnce
         storageClass: freenas-iscsi-csi
         size: 1Gi
-
-      media:
-        enabled: true
-        type: nfs
-        server: ${SECRET_NFS_SERVER} # poke
-        path: ${SECRET_NFS_MEDIA}
-        mountPath: /media
