@@ -102,7 +102,7 @@ spec:
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         storageClass: freenas-iscsi-csi
-        size: 1Gi
+        size: 15Gi
 
       plex-cache:
         type: persistentVolumeClaim
