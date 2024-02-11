@@ -21,6 +21,9 @@ module.exports = {
     "/media/downloads/torrent/complete/tv-sonarr",
     "/media/downloads/torrent/complete/music",
     "/media/downloads/torrent/complete/manual",
+    "/media/movies",
+    "/media/music",
+    "/media/tv"
   ],
   maxDataDepth: 1,
   outputDir: "/config/xseeds",
