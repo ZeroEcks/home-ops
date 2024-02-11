@@ -19,4 +19,5 @@ resources:
   - ./cyberchef/ks.yaml
   - ./autobrr/ks.yaml
   - ./plex/ks.yaml
+  - ./cross-seed/ks.yaml
   - ./netboot/ks.yaml
