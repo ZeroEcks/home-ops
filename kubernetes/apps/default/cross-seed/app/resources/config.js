@@ -25,7 +25,7 @@ module.exports = {
     "/media/music",
     "/media/tv"
   ],
-  maxDataDepth: 1,
+  maxDataDepth: 2,
   outputDir: "/config/xseeds",
   torrentDir: "/media/downloads/torrent/complete/meta-info",
 };
