@@ -3,7 +3,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres16
+  name: mastodon
 spec:
   instances: 1
   imageName: ghcr.io/cloudnative-pg/postgresql:16.1-19
@@ -39,11 +39,11 @@ spec:
       wal:
         compression: bzip2
         maxParallel: 8
-      destinationPath: s3://sol-cloudnative-pg/default
+      destinationPath: s3://sol-cloudnative-pg/mastodon
       endpointURL: https://s3.us-east-005.backblazeb2.com
       # Note: serverName version needs to be inclemented
       # when recovering from an existing cnpg cluster
-      serverName: &currentCluster postgres16-v3
+      serverName: &currentCluster mastodon-pg
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret

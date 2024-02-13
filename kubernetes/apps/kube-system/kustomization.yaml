@@ -6,4 +6,5 @@ resources:
   - ./cilium/ks.yaml
   - ./metrics-server/ks.yaml
   - ./reloader/ks.yaml
+  - ./reflector/ks.yaml
   - ./democratic-csi/ks.yaml
