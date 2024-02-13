@@ -32,6 +32,14 @@ spec:
         type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom: &envFrom
+              - secretRef:
+                  name: bazarr-secret
         containers:
           main:
             image:
@@ -40,6 +48,7 @@ spec:
             env:
               TZ: ${TIMEZONE}
               BAZARR__PORT: &port 6767 # not actually used... but i like the template
+            envFrom: *envFrom
             resources:
               requests:
                 cpu: 10m
