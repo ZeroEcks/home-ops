@@ -27,6 +27,15 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
+        initContainers:
+          init-db:
+            image:
+              repository: ghcr.io/onedr0p/postgres-init
+              tag: 16
+            envFrom: &envFrom
+              - secretRef:
+                  name: zipline-secret
+
         containers:
           main:
             image:
@@ -42,8 +51,8 @@ spec:
               CORE_DATABASE_URL:
                 valueFrom:
                   secretKeyRef:
-                    name: "${APP}-pguser-${DB_USER}"
-                    key: uri
+                    name: zipline-secret
+                    key: CORE_DATABASE_URL
               CORE_RETURN_HTTPS: "true"
               CORE_COMPRESSION_ENABLED: "true"
               CORE_COMPRESSION_THRESHOLD: "200mb"
@@ -89,7 +98,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - host: &host "z.${SECRET_DOMAIN}"
             paths:
               - path: /
                 service:
@@ -98,3 +107,11 @@ spec:
         tls:
           - hosts:
               - *host
+    persistence:
+      media:
+        enabled: true
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: freenas-iscsi-csi
+        size: 64Gi
+        mountPath: /media
