@@ -65,7 +65,7 @@ spec:
               # Features
               FEATURES_INVITES: "false"
               FEATURES_ROBOTS_TXT: "false"
-              FEATURES_USER_REGISTRATION: "false"
+              FEATURES_USER_REGISTRATION: "true"
               # Uploader
               UPLOADER_DEFAULT_FORMAT: "DATE"
               UPLOADER_DISABLED_EXTENSIONS: ""
