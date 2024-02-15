@@ -6,3 +6,4 @@ resources:
   - ./namespace.yaml
   - ./notifications.yaml
   - ./kube-prometheus-stack/ks.yaml
+  - ./grafana/ks.yaml

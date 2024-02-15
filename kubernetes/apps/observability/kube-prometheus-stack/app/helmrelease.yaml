@@ -165,16 +165,7 @@ spec:
                 - __meta_kubernetes_pod_node_name
               targetLabel: kubernetes_node
     grafana:
-      ingress:
-        enabled: true
-        pathType: Prefix
-        ingressClassName: internal
-        hosts:
-          - &host grafana.${SECRET_DOMAIN}
-        tls:
-          - hosts:
-              - *host
-      enabled: true
+      enabled: false
       forceDeployDashboards: true
       sidecar:
         dashboards:
