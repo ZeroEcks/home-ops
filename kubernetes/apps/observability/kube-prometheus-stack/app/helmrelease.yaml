@@ -41,13 +41,13 @@ spec:
           - hosts:
               - *host
       alertmanagerSpec:
-        replicas: 2
+        replicas: 1
         useExistingSecret: true
         configSecret: alertmanager-secret
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: democratic-csi-iscsi
+              storageClassName: freenas-iscsi-csi
               resources:
                 requests:
                   storage: 1Gi
@@ -101,7 +101,7 @@ spec:
       thanosServiceMonitor:
         enabled: true
       prometheusSpec:
-        replicas: 2
+        replicas: 1
         replicaExternalLabelName: __replica__
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
@@ -114,13 +114,13 @@ spec:
           - auto-gomaxprocs
           - memory-snapshot-on-shutdown
           - new-service-discovery-manager
-        #thanos:
-          #image: quay.io/thanos/thanos:${THANOS_VERSION}
-          #version: "${THANOS_VERSION#v}"
-          #objectStorageConfig:
-            #existingSecret:
-              #name: thanos-objstore-secret
-              #key: objstore.yml
+        thanos:
+          image: quay.io/thanos/thanos:${THANOS_VERSION}
+          version: "${THANOS_VERSION#v}"
+          objectStorageConfig:
+            existingSecret:
+              name: thanos-objstore-secret
+              key: objstore.yml
         retention: 2d
         retentionSize: 15GB
         externalLabels:
@@ -128,7 +128,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: democratic-csi-iscsi
+              storageClassName: freenas-iscsi-csi
               resources:
                 requests:
                   storage: 20Gi
