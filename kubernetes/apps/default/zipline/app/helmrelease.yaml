@@ -41,18 +41,11 @@ spec:
             image:
               repository: ghcr.io/diced/zipline
               tag: 3.7.8
+            envFrom: &envFrom
+              - secretRef:
+                  name: zipline-secret
             env:
               # Core config
-              CORE_SECRET:
-                valueFrom:
-                  secretKeyRef:
-                    name: zipline-secret
-                    key: CORE_SECRET
-              CORE_DATABASE_URL:
-                valueFrom:
-                  secretKeyRef:
-                    name: zipline-secret
-                    key: CORE_DATABASE_URL
               CORE_RETURN_HTTPS: "true"
               CORE_COMPRESSION_ENABLED: "true"
               CORE_COMPRESSION_THRESHOLD: "200mb"

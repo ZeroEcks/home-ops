@@ -17,6 +17,7 @@ resources:
   - ./sabnzbd/ks.yaml
   - ./unpackerr/ks.yaml
   - ./cyberchef/ks.yaml
+  - ./home-assistant/ks.yaml
   - ./autobrr/ks.yaml
   - ./plex/ks.yaml
   - ./zipline/ks.yaml
