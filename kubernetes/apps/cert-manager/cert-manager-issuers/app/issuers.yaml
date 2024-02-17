@@ -41,13 +41,13 @@ spec:
 #apiVersion: cert-manager.io/v1
 #kind: ClusterIssuer
 #metadata:
-#  name: letsencrypt-production
+#  name: letsencrypt-social-production
 #spec:
 #  acme:
 #    server: https://acme-v02.api.letsencrypt.org/directory
 #    email: "${SECRET_ACME_EMAIL}"
 #    privateKeySecretRef:
-#      name: letsencrypt-production
+#      name: letsencrypt-social-production
 #    solvers:
 #      - dns01:
 #          cloudflare:
@@ -61,13 +61,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-staging
+  name: letsencrypt-social-staging
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     email: "${SECRET_ACME_EMAIL}"
     privateKeySecretRef:
-      name: letsencrypt-staging
+      name: letsencrypt-social-staging
     solvers:
       - dns01:
           cloudflare:
