@@ -20,7 +20,7 @@ metadata:
 spec:
   secretName: "${SECRET_SOCIAL_DOMAIN/./-}-production-tls"
   issuerRef:
-    name: letsencrypt-production
+    name: letsencrypt-social-production
     kind: ClusterIssuer
   commonName: "${SECRET_SOCIAL_DOMAIN}"
   dnsNames:
