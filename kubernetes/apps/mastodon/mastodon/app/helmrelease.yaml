@@ -28,8 +28,8 @@ spec:
           - secretRef:
               name: mastodon-secret
     image:
-      registry: docker.io
-      repository: ghcr.io/glitch-soc/mastodon
+      registry: ghcr.io
+      repository: glitch-soc/mastodon
       tag: nightly.2024-02-17-security
       pullPolicy: IfNotPresent
     adminUser: ZeroEcks
