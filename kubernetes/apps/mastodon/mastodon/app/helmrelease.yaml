@@ -77,7 +77,7 @@ spec:
 
     ingress:
       enabled: true
-      ingressClassName: external-social
+      ingressClassName: external
       annotations:
         nginx.ingress.kubernetes.io/proxy-body-size: 40m
         nginx.org/client-max-body-size: 40m
