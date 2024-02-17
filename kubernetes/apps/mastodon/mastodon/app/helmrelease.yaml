@@ -8,10 +8,10 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: mastodon
+      chart: .
       version: 4.1.1
       sourceRef:
-        kind: HelmRepository
+        kind: GitRepository
         name: mastodon
         namespace: flux-system
   values:
