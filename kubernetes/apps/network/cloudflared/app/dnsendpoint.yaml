@@ -12,7 +12,7 @@ spec:
 apiVersion: externaldns.k8s.io/v1alpha1
 kind: DNSEndpoint
 metadata:
-  name: cloudflared
+  name: cloudflared-social
 spec:
   endpoints:
     - dnsName: "external.${SECRET_SOCIAL_DOMAIN}"
