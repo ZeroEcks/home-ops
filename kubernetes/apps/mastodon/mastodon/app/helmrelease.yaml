@@ -8,11 +8,11 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: .
+      chart: mastodon
       version: 4.1.1
       sourceRef:
-        kind: GitRepository
-        name: mastodon
+        kind: HelmRepository
+        name: wrmilling-charts
         namespace: flux-system
   values:
     image:
