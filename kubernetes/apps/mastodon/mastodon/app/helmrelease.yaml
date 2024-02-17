@@ -110,5 +110,3 @@ spec:
     redis:
       enabled: false
       hostname: "redis.database.svc.cluster.local"
-      auth:
-        password: ""
