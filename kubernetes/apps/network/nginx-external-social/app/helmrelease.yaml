@@ -26,7 +26,7 @@ spec:
     - name: cloudflared
       namespace: network
   values:
-    fullnameOverride: nginx-external
+    fullnameOverride: nginx-external-social
     controller:
       replicaCount: 1
       service:
@@ -35,7 +35,7 @@ spec:
           io.cilium/lb-ipam-ips: "192.168.1.12"
         externalTrafficPolicy: Cluster
       ingressClassResource:
-        name: external
+        name: external-social
         default: false
         controllerValue: k8s.io/external
       admissionWebhooks:
@@ -43,7 +43,7 @@ spec:
           matchExpressions:
             - key: ingress-class
               operator: In
-              values: ["external"]
+              values: ["external-social"]
       config:
         client-body-buffer-size: 100M
         client-body-timeout: 120
@@ -78,7 +78,7 @@ spec:
           labelSelector:
             matchLabels:
               app.kubernetes.io/name: ingress-nginx
-              app.kubernetes.io/instance: nginx-external
+              app.kubernetes.io/instance: nginx-external-social
               app.kubernetes.io/component: controller
       resources:
         requests:

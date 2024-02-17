@@ -88,7 +88,7 @@ spec:
         enabled: true
         ingress:
           enabled: true
-          className: external
+          className: external-social
           annotations:
             external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
           hosts:
