@@ -9,4 +9,5 @@ resources:
   - ./external-dns/ks.yaml
   - ./k8s-gateway/ks.yaml
   - ./nginx-external/ks.yaml
+  - ./nginx-external-social/ks.yaml
   - ./nginx-internal/ks.yaml
