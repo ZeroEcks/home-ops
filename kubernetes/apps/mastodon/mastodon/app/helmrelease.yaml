@@ -34,7 +34,7 @@ spec:
         enabled: true
         existingSecret: "mastodon-secret"
         bucket: "cuties-cloud-infra-media"
-        endpoint: "syd1.digitaloceanspaces.com"
+        endpoint: "https://syd1.digitaloceanspaces.com"
         hostname: "syd1.digitaloceanspaces.com"
         alias_host: "media.${SECRET_SOCIAL_DOMAIN}"
       secrets:
