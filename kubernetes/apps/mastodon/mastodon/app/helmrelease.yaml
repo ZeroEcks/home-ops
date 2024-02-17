@@ -63,7 +63,7 @@ spec:
       initJob:
         createAdmin: false
       postgresql:
-        enabled: true
+        enabled: false
       externalDatabase:
         host: "postgres16-rw.database.svc.cluster.local"
         port: 5432
@@ -72,7 +72,7 @@ spec:
         existingSecret: "mastodon-secret"
         existingSecretPasswordKey: "DATABASE_PASSWORD"
       redis:
-        enabled: true
+        enabled: false
       externalRedis:
         host: "redis.database.svc.cluster.local"
         port: 6379
