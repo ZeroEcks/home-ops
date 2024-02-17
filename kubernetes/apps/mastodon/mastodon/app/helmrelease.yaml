@@ -37,6 +37,7 @@ spec:
     existingSecret: mastodon-secret
     useSecureWebSocket: true
     localDomain: ${SECRET_SOCIAL_DOMAIN}
+    s3AliasHost: media.${SECRET_SOCIAL_DOMAIN}
     tootctlMediaManagement:
       enabled: true
       removeAttachments: true
