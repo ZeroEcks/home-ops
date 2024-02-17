@@ -5,7 +5,7 @@ metadata:
   name: &app mastodon
   namespace: flux-system
 spec:
-  targetNamespace: default
+  targetNamespace: mastodon
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
