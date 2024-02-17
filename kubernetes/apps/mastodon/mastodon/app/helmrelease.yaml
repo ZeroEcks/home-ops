@@ -110,3 +110,5 @@ spec:
     redis:
       enabled: false
       hostname: "redis.database.svc.cluster.local"
+      auth:
+        existingSecret: "mastodon-redis-secret"

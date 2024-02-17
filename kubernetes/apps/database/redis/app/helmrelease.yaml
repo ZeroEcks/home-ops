@@ -26,7 +26,8 @@ spec:
     keepHistory: false
   values:
     auth:
-      enabled: false
+      enabled: true
+      password: ${SECRET_REDIS_PASSWORD}
       sentinel: false
     master:
       persistence:

@@ -62,6 +62,7 @@ spec:
             redis-node-2.redis-headless.database.svc.cluster.local:26379
           db: 13
           master_name: redis-master
+          password: ${SECRET_REDIS_PASSWORD}
       ingress:
         enabled: true
         ingressClassName: internal
