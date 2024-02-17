@@ -20,7 +20,7 @@ metadata:
 spec:
   secretName: "${SECRET_SOCIAL_DOMAIN/./-}-staging-tls"
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-social-staging
     kind: ClusterIssuer
   commonName: "${SECRET_SOCIAL_DOMAIN}"
   dnsNames:
