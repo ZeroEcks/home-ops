@@ -19,13 +19,13 @@ spec:
     parameters:
       max_connections: "600"
       max_slot_wal_keep_size: 10GB
-      shared_buffers: 512MB
+      shared_buffers: 2000MB
   resources:
     requests:
       cpu: 500m
       memory: 1Gi
     limits:
-      memory: 6Gi
+      memory: 8Gi
   monitoring:
     enablePodMonitor: true
     # Ref: https://github.com/cloudnative-pg/cloudnative-pg/issues/2501
