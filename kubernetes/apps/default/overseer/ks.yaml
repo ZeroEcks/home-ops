@@ -5,6 +5,9 @@ metadata:
   name: &app overseer
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: democratic-csi-iscsi
+      namespace: kube-system
   targetNamespace: default
   commonMetadata:
     labels:

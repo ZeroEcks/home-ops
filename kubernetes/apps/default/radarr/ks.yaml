@@ -6,6 +6,11 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: default
+  dependsOn:
+    - name: democratic-csi-iscsi
+      namespace: kube-system
+    - name: postgres16-rw
+      namespace: database
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

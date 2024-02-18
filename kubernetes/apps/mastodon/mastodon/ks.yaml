@@ -5,6 +5,11 @@ metadata:
   name: &app mastodon
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: democratic-csi-iscsi
+      namespace: kube-system
+    - name: postgres16-rw
+      namespace: database
   targetNamespace: mastodon
   commonMetadata:
     labels:
