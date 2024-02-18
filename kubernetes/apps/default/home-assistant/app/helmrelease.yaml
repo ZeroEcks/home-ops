@@ -46,7 +46,6 @@ spec:
               startup:
                 enabled: false
             securityContext:
-            securityContext:
               capabilities:
                 add:
                   - NET_ADMIN
