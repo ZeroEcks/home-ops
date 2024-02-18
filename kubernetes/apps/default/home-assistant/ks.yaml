@@ -53,7 +53,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app home-assistant-code
+  name: &app home-assistant-mosquitto
   namespace: flux-system
 spec:
   targetNamespace: default
