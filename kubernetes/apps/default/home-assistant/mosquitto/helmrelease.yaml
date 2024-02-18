@@ -76,6 +76,7 @@ spec:
       config-file:
         type: configMap
         name: mosquitto-configmap
+        defaultMode: 0700
         advancedMounts:
           main:
             main:
@@ -83,6 +84,7 @@ spec:
                 subPath: mosquitto.conf
       acl-file:
         type: configMap
+        defaultMode: 0700
         name: mosquitto-acl-configmap
         advancedMounts:
           main:
@@ -92,11 +94,13 @@ spec:
       secret-file:
         type: secret
         name: mosquitto-secret
+        defaultMode: 0700
         advancedMounts:
           main:
             init-config:
               - path: /tmp/secret
       external-config:
         type: emptyDir
+        defaultMode: 0700
         globalMounts:
           - path: /mosquitto/external_config
