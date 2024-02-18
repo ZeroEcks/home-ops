@@ -24,6 +24,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    defaultPodOptions:
+      hostNetwork: true
     controllers:
       main:
         annotations:
@@ -45,7 +47,6 @@ spec:
                 enabled: false
               startup:
                 enabled: false
-            hostNetwork: true
             securityContext:
               privileged: true
               capabilities:
