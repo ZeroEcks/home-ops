@@ -7,7 +7,6 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-democratic-csi-iscsi
-      namespace: kube-system
   targetNamespace: default
   commonMetadata:
     labels:

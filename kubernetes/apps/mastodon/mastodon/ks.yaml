@@ -7,9 +7,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-democratic-csi-iscsi
-      namespace: kube-system
-    - name: postgres16-rw
-      namespace: database
+    - name: cloudnative-pg-cluster
   targetNamespace: mastodon
   commonMetadata:
     labels:
