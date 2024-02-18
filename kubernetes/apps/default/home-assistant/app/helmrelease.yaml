@@ -52,7 +52,6 @@ spec:
                   - NET_ADMIN
                   - NET_RAW
                   - NET_BROADCAST
-              allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
             resources:
               requests:
