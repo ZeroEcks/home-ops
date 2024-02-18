@@ -7,10 +7,8 @@ metadata:
 spec:
   targetNamespace: default
   dependsOn:
-    - name: democratic-csi-iscsi
-      namespace: kube-system
-    - name: postgres16-rw
-      namespace: database
+    - name: cluster-apps-democratic-csi-iscsi
+    - name: cloudnative-pg-cluster
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app

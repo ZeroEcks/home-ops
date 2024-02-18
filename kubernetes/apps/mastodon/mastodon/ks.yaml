@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: democratic-csi-iscsi
+    - name: cluster-apps-democratic-csi-iscsi
       namespace: kube-system
     - name: postgres16-rw
       namespace: database

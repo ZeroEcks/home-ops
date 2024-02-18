@@ -24,8 +24,7 @@ spec:
   uninstall:
     keepHistory: false
   dependsOn:
-    - name: democratic-csi-iscsi
-      namespace: kube-system
+    - name: cluster-apps-democratic-csi-iscsi
   values:
     crds:
       create: true

@@ -7,7 +7,7 @@ metadata:
 spec:
   targetNamespace: default
   dependsOn:
-    - name: democratic-csi-iscsi
+    - name: cluster-apps-democratic-csi-iscsi
       namespace: kube-system
     - name: postgres16-rw
       namespace: database
