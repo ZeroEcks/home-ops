@@ -72,7 +72,8 @@ spec:
         accessMode: ReadWriteOnce
         storageClass: freenas-iscsi-csi
         size: 5Gi
-        mountPath: /data
+        globalMounts:
+          - path: /data
       config-file:
         type: configMap
         name: mosquitto-configmap

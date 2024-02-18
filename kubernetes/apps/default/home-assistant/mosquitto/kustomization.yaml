@@ -8,7 +8,7 @@ resources:
 configMapGenerator:
   - name: mosquitto-acl-configmap
     files:
-      - mosquitto.conf=./resources/acl.conf
+      - acl.conf=./resources/acl.conf
   - name: mosquitto-configmap
     files:
       - mosquitto.conf=./resources/mosquitto.conf
