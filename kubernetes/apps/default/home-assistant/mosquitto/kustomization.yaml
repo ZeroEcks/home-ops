@@ -6,6 +6,9 @@ resources:
   - ./helmrelease.yaml
   - ./secret.sops.yaml
 configMapGenerator:
+  - name: mosquitto-acl-configmap
+    files:
+      - mosquitto.conf=./resources/acl.conf
   - name: mosquitto-configmap
     files:
       - mosquitto.conf=./resources/mosquitto.conf

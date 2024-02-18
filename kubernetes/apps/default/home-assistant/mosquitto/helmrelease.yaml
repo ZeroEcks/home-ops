@@ -81,6 +81,14 @@ spec:
             main:
               - path: /mosquitto/config/mosquitto.conf
                 subPath: mosquitto.conf
+      acl-file:
+        type: configMap
+        name: mosquitto-acl-configmap
+        advancedMounts:
+          main:
+            main:
+              - path: /mosquitto/config/acl.conf
+                subPath: acl.conf
       secret-file:
         type: secret
         name: mosquitto-secret
