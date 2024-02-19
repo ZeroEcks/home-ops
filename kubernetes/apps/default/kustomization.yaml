@@ -23,3 +23,4 @@ resources:
   - ./zipline/ks.yaml
   - ./cross-seed/ks.yaml
   - ./netboot/ks.yaml
+  - ./slskd/ks.yaml
