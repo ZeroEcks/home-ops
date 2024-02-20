@@ -95,6 +95,7 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /b/.config/betanin
+
       beets:
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
@@ -102,7 +103,8 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /b/.config/beets
-      betanin-database:
+
+      database:
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         storageClass: freenas-iscsi-csi
