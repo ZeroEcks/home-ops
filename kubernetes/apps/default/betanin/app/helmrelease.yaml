@@ -65,13 +65,13 @@ spec:
               readiness: *probes
               startup:
                 enabled: false
-        pod:
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
-            supplementalGroups: [10000]
+        # pod:
+          # securityContext:
+            # runAsUser: 568
+            # runAsGroup: 568
+            # fsGroup: 568
+            # fsGroupChangePolicy: OnRootMismatch
+            # supplementalGroups: [10000]
     service:
       main:
         ports:
@@ -109,12 +109,4 @@ spec:
         type: nfs
         server: ${SECRET_NFS_SERVER} # poke
         path: ${SECRET_NFS_MEDIA}
-        advancedMounts:
-          main:
-            main:
-              - path: /music
-                readOnly: false
-                subPath: /music
-              - path: /downloads
-                readOnly: false
-                subPath: /
+        mountPath: /media
