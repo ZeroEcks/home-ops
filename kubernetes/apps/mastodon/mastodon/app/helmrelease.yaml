@@ -95,7 +95,7 @@ spec:
             - *host
 
     elasticsearch:
-      enabled: false
+      enabled: true
       image:
         tag: 7.17.9
 
