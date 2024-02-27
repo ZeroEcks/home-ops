@@ -96,3 +96,5 @@ spec:
         accessMode: ReadWriteOnce
         storageClass: freenas-iscsi-csi
         size: 1Gi
+      tmp:
+        type: emptyDir
