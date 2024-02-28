@@ -88,7 +88,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: "nginx"
+        className: "internal"
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
           hajimari.io/icon: mdi:lan
