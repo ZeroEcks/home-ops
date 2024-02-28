@@ -25,3 +25,4 @@ resources:
   - ./cross-seed/ks.yaml
   - ./netboot/ks.yaml
   - ./slskd/ks.yaml
+  - ./unifi/ks.yaml
