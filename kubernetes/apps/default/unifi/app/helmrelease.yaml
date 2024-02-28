@@ -27,6 +27,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    defaultPodOptions:
+      hostNetwork: true
     controllers:
       main:
         annotations:
