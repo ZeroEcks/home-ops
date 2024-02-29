@@ -22,6 +22,12 @@ spec:
 
     mastodon:
       authorizedFetch: true
+      deepl:
+        enabled: true
+        plan: free
+        apiKeySecretRef:
+          name: mastodon-secret
+          key: deepl-api-key
       createAdmin:
         enabled: false
         username: "ZeroEcks"
