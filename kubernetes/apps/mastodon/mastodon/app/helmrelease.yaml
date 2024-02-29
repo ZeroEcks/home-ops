@@ -82,6 +82,7 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-social-production
         nginx.ingress.kubernetes.io/proxy-body-size: 40m
         nginx.org/client-max-body-size: 40m
+        nginx.ingress.kubernetes.io/denylist-source-range: 2a01:4f8:140:2113::2
         external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
       hosts:
         - host: &host "${SECRET_SOCIAL_DOMAIN}"
