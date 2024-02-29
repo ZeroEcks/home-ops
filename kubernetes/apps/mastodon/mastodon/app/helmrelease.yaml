@@ -21,6 +21,7 @@ spec:
       pullPolicy: IfNotPresent
 
     mastodon:
+      authorizedFetch: true
       createAdmin:
         enabled: false
         username: "ZeroEcks"
