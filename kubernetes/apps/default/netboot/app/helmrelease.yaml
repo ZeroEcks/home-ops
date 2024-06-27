@@ -33,7 +33,7 @@ spec:
           main:
             image:
               repository: ghcr.io/netbootxyz/netbootxyz
-              tag: latest@sha256:9e37f3844ef348d0c17d1f8d111e63e1d7b6e98e4d14f25935e3f475b06c5994
+              tag: latest@sha256:b25ad46d4a6b576e43f0fe4a00cc69cbb3fc7c26a0a95c1539be656c07b49ad3
     defaultPodOptions:
       hostNetwork: true
     service:
