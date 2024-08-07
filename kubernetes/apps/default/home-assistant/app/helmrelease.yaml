@@ -34,7 +34,7 @@ spec:
           main:
             image:
               repository: ghcr.io/onedr0p/home-assistant
-              tag: 2024.2.5@sha256:3c63e08234d808cbe2f29efc44347ddf09b277fe9c570ffe042d15ca2944b9f7
+              tag: 2024.8.0@sha256:dfbd75acb4acb454d40c5461f653f2c0c9b356d5eafb0e276bf53f8595a1b545
             env:
               TZ: ${TIMEZONE}
             envFrom:
