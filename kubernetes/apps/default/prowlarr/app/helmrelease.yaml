@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.5.0
+      version: 3.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -27,7 +27,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      prowlarr:
         type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
@@ -40,7 +40,7 @@ spec:
               - secretRef:
                   name: prowlarr-secret
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/prowlarr-develop
               tag: 1.13.3.4273@sha256:ca264d9629d35fef799c403fa1fe0625de6dabf6aec08d43ca981867ca8810c2
@@ -86,14 +86,15 @@ spec:
             fsGroup: 568
             fsGroupChangePolicy: OnRootMismatch
             supplementalGroups: [10000]
+
     service:
-      main:
+      app:
+        controller: prowlarr
         ports:
           http:
             port: *port
+
     ingress:
-      main:
-        enabled: false
       internal:
         enabled: true
         className: internal
@@ -102,7 +103,7 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
