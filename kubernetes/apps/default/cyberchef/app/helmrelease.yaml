@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.5.0
+      version: 3.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -23,12 +23,21 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    # yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.2.0/charts/other/app-template/values.schema.json
+    defaultPodOptions:
+      securityContext:
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups: [10000]
+
     controllers:
-      main:
+      cyberchef:
         annotations:
           reloader.stakater.com/auto: 'true'
         containers:
-          main:
+          app:
             image:
               repository: docker.io/mpepping/cyberchef
               tag: v10.8.1
@@ -40,13 +49,23 @@ spec:
                 memory: 79M
               limits:
                 memory: 79M
+            probes:
+              liveness:
+                enabled: true
+                spec:
+                  initialDelaySeconds: 0
+                  failureThreshold: 3
+                  timeoutSeconds: 1
+                  periodSeconds: 10
+
     service:
-      main:
+      app:
+        controller: cyberchef
         ports:
           http:
-            port: 8000
+            port: &port 8000
     ingress:
-      main:
+      app:
         enabled: true
         className: external
         annotations:
@@ -56,7 +75,7 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
