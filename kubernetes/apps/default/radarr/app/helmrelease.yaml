@@ -82,8 +82,8 @@ spec:
             supplementalGroups: [10000]
 
     service:
-      controller: radarr
-      main:
+      app:
+        controller: radarr
         ports:
           http:
             port: *port
