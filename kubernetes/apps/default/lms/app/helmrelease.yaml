@@ -1,0 +1,93 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app lms
+  namespace: default
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      lms:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: lmscommunity/logitechmediaserver
+              tag: 9.0.0@sha256:7a68dd932ca8a9acdd8e7b80685f49184cc83f90668843e55b962f367affb9de
+            env:
+              AUDIO_DIR: &music /media/music
+              PLAYLIST_DIR: &playlist /media/music/.lms
+            resources:
+              requests:
+                memory: 250Mi
+                cpu: 15m
+              limits:
+                memory: 4096Mi
+    service:
+      app:
+        controller: *app
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.20
+        externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 9000
+          cli:
+            enabled: true
+            port: 9090
+            protocol: TCP
+          slimproto:
+            enabled: true
+            port: 3483
+            protocol: TCP
+          slimproto-udp:
+            enabled: true
+            port: 3483
+            protocol: UDP
+    ingress:
+      app:
+        enabled: true
+        className: internal
+        hosts:
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+    persistence:
+      config:
+        enabled: true
+        existingClaim: *app
+        globalMounts:
+          - path: /srv/squeezebox
+      media:
+        enabled: true
+        type: nfs
+        server: ${SECRET_NFS_SERVER}
+        path: ${SECRET_NFS_MEDIA}

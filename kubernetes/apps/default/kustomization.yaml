@@ -21,3 +21,4 @@ resources:
   - ./plex/ks.yaml
   - ./zipline/ks.yaml
   - ./unifi/ks.yaml
+  - ./lms/ks.yaml
