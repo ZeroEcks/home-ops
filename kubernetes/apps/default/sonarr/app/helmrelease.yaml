@@ -82,6 +82,7 @@ spec:
             supplementalGroups: [10000]
     service:
       app:
+        controller: sonarr
         ports:
           http:
             port: *port
