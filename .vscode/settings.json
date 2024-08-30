@@ -16,7 +16,8 @@
     "sops.defaults.ageKeyFile": "age.key",
     "yaml.schemas": {
         "ansible": "./ansible/*.yaml",
-        "Kubernetes": "./kubernetes/*.yaml"
+        "Kubernetes": "./kubernetes/*.yaml",
+        "https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.2.0/charts/other/app-template/values.schema.json": "untitled:Untitled-2"
     },
     "vs-kubernetes": {
         "vs-kubernetes.kubeconfig": "./kubeconfig",

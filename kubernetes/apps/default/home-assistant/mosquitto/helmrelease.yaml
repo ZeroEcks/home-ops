@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -24,8 +24,9 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    # yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.2.0/charts/other/app-template/values.schema.json
     controllers:
-      main:
+      mosquitto:
         annotations:
           reloader.stakater.com/auto: "true"
         initContainers:
@@ -36,7 +37,7 @@ spec:
             command: ["/bin/sh", "-c"]
             args: ["cp /tmp/secret/* /mosquitto/external_config/ && mosquitto_passwd -U /mosquitto/external_config/mosquitto_pwd"]
         containers:
-          main:
+          app:
             image:
               repository: docker.io/library/eclipse-mosquitto
               tag: 2.0.18@sha256:da38d58ee0037af94f746dc3d884c57f50140ef5f592bf6fcbb80d66d131a77b
@@ -56,8 +57,10 @@ spec:
             runAsNonRoot: true
             fsGroup: 568
             fsGroupChangePolicy: OnRootMismatch
+
     service:
-      main:
+      app:
+        controller: mosquitto
         type: LoadBalancer
         annotations:
           external-dns.alpha.kubernetes.io/hostname: mosquitto.${SECRET_DOMAIN}
@@ -65,6 +68,7 @@ spec:
         ports:
           http:
             port: 1883
+
     persistence:
       config:
         enabled: true
@@ -79,8 +83,8 @@ spec:
         name: mosquitto-configmap
         defaultMode: 0700
         advancedMounts:
-          main:
-            main:
+          mosquitto:
+            app:
               - path: /mosquitto/config/mosquitto.conf
                 subPath: mosquitto.conf
       acl-file:
@@ -88,8 +92,8 @@ spec:
         defaultMode: 0700
         name: mosquitto-acl-configmap
         advancedMounts:
-          main:
-            main:
+          mosquitto:
+            app:
               - path: /mosquitto/config/acl.conf
                 subPath: acl.conf
       secret-file:
@@ -97,11 +101,10 @@ spec:
         name: mosquitto-secret
         defaultMode: 0700
         advancedMounts:
-          main:
+          mosquitto:
             init-config:
               - path: /tmp/secret
       external-config:
         type: emptyDir
-        defaultMode: 0700
         globalMounts:
           - path: /mosquitto/external_config
