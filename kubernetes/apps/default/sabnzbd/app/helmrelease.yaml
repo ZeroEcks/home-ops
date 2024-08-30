@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.5.0
+      version: 3.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,11 +25,11 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      sabnzbd:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/sabnzbd
               tag: 4.2.2@sha256:5b1f15c8d25afa2342505492486361d4ecf14449e1453aeea45cd7c1e5eeb63a
@@ -80,13 +80,12 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
             supplementalGroups: [10000]
     service:
-      main:
+      app:
+        controller: sabnzbd
         ports:
           http:
             port: *port
     ingress:
-      main:
-        enabled: false
       internal:
         enabled: true
         className: internal
@@ -95,7 +94,7 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -117,4 +116,3 @@ spec:
         type: nfs
         server: ${SECRET_NFS_SERVER}
         path: ${SECRET_NFS_MEDIA}
-        mountPath: /media
