@@ -48,7 +48,7 @@ spec:
               JVM_MAX_HEAP_SIZE: 1024M
             resources:
               requests:
-                memory: 2Gi
+                memory: 1Gi
                 cpu: 50m
     service:
       app:
