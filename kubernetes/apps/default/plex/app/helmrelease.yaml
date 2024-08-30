@@ -32,7 +32,7 @@ spec:
           main:
             image:
               repository: ghcr.io/onedr0p/plex-beta
-              tag: 1.40.0.7775-456fbaf97@sha256:cd6bafd8cf9f75c2d5b6517de312a82a986049f89f089da74b6bdb23928b8b37
+              tag: 1.41.0.8930-056c2ed26
             env:
               TZ: ${TIMEZONE}
               ADVERTISE_IP: "https://192.168.1.9:32400,https://plex.melody.blue:443"
