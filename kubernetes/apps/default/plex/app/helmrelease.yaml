@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.5.0
+      version: 3.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,11 +25,11 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      plex:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/plex-beta
               tag: 1.41.0.8930-056c2ed26
@@ -69,7 +69,8 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
             supplementalGroups: [44, 105, 10000]
     service:
-      main:
+      app:
+        controller: plex
         type: LoadBalancer
         annotations:
           io.cilium/lb-ipam-ips: 192.168.1.9
@@ -78,8 +79,6 @@ spec:
             port: 32400
 
     ingress:
-      main:
-        enabled: false
       external:
         enabled: true
         className: external
@@ -90,7 +89,7 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -123,4 +122,3 @@ spec:
         type: nfs
         server: ${SECRET_NFS_SERVER}
         path: ${SECRET_NFS_MEDIA}
-        mountPath: /media
