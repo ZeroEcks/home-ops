@@ -16,9 +16,9 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: "${SECRET_SOCIAL_DOMAIN/./-}-production"
+  name: "${SECRET_SOCIAL_DOMAIN/./-}-social-production"
 spec:
-  secretName: "${SECRET_SOCIAL_DOMAIN/./-}-production-tls"
+  secretName: "${SECRET_SOCIAL_DOMAIN/./-}-social-production-tls"
   issuerRef:
     name: letsencrypt-social-production
     kind: ClusterIssuer
