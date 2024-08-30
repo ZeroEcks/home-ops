@@ -20,6 +20,5 @@ resources:
   - ./autobrr/ks.yaml
   - ./plex/ks.yaml
   - ./zipline/ks.yaml
-  - ./netboot/ks.yaml
   - ./slskd/ks.yaml
   - ./unifi/ks.yaml
