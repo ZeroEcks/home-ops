@@ -37,14 +37,20 @@ spec:
               repository: lmscommunity/logitechmediaserver
               tag: 9.0.0@sha256:7a68dd932ca8a9acdd8e7b80685f49184cc83f90668843e55b962f367affb9de
             env:
+              TZ: ${TIMEZONE}
               AUDIO_DIR: &music /media/music
               PLAYLIST_DIR: &playlist /media/music/.lms
+              PUID: 568
+              PGID: 568
             resources:
               requests:
                 memory: 250Mi
                 cpu: 15m
               limits:
                 memory: 4096Mi
+        pod:
+          securityContext:
+            supplementalGroups: [44, 105, 10000]
     service:
       app:
         controller: *app
@@ -83,9 +89,13 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: *app
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: freenas-iscsi-csi
+        size: 1Gi
         globalMounts:
           - path: /srv/squeezebox
+
       media:
         enabled: true
         type: nfs
