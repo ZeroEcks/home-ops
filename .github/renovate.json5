@@ -41,6 +41,12 @@
   "packageRules": [
     // automerge
     {
+      "matchUpdateTypes": ["patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automergeType": "branch",
+      "automerge": true
+    },
+    {
       "description": ["Auto merge Github Actions"],
       "matchManagers": ["github-actions"],
       "automerge": true,
