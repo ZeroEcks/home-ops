@@ -105,6 +105,7 @@ spec:
 
     elasticsearch:
       enabled: true
+      preset: small_cluster
       master:
         replicaCount: 1
       data:
