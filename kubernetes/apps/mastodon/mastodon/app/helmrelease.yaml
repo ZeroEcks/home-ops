@@ -18,7 +18,7 @@ spec:
     image:
       repository: ghcr.io/glitch-soc/mastodon
       # renovate: datasource=github-releases depName=glitch-soc/mastodon
-      tag: v4.3.0-beta.1
+      tag: &version v4.3.0-beta.1
       pullPolicy: IfNotPresent
 
     mastodon:
@@ -78,7 +78,7 @@ spec:
       streaming:
         image:
           repository: ghcr.io/glitch-soc/mastodon-streaming
-          tag: nightly.2024-07-05-security
+          tag: *version
         port: 4000
       web:
         port: 3000
@@ -114,6 +114,7 @@ spec:
       ingest:
         replicaCount: 1
       image:
+        # renovate: datasource=docker depName=docker.io/bitnami/elasticsearch
         tag: 7.17.9
 
     postgresql:
