@@ -17,6 +17,7 @@ spec:
   values:
     image:
       repository: ghcr.io/glitch-soc/mastodon
+      # renovate: datasource=github-releases depName=glitch-soc/mastodon
       tag: nightly.2024-07-05-security
       pullPolicy: IfNotPresent
 
