@@ -35,7 +35,7 @@ spec:
           app:
             image:
               repository: lmscommunity/logitechmediaserver
-              tag: 9.0.0@sha256:ebb908707e043f9ff2982108594f2eb04950a8e47ec1283e34dc36fcdb1243ca
+              tag: 9.0.0@sha256:007c9ed965e62b081c5028ea461589df64c237a96eca4ab7976698de96f04134
             env:
               TZ: ${TIMEZONE}
               AUDIO_DIR: &music /media/music
