@@ -37,6 +37,7 @@ spec:
     retentionPolicy: 30d
     barmanObjectStore: &barmanObjectStore
       data:
+        jobs: 6 # Just seems like a reasonable amount, not to do with cpu.
         compression: bzip2
       wal:
         compression: bzip2
