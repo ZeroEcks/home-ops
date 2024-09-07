@@ -40,7 +40,7 @@ spec:
         compression: bzip2
       wal:
         compression: bzip2
-        maxParallel: 16
+        maxParallel: 6 # NUM_CORES - 2 i guess?
       destinationPath: s3://sol-cloudnative-pg/
       endpointURL: https://s3.us-east-005.backblazeb2.com
       # Note: serverName version needs to be inclemented
