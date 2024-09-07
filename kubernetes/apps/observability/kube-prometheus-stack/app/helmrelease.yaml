@@ -101,6 +101,7 @@ spec:
       thanosServiceMonitor:
         enabled: true
       prometheusSpec:
+        scrapeInterval: 1m # Must match interval in Grafana Helm chart
         replicas: 1
         replicaExternalLabelName: __replica__
         ruleSelectorNilUsesHelmValues: false
