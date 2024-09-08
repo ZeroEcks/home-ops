@@ -93,15 +93,21 @@ spec:
             port: 9200
 
     ingress:
-      app:
+      external:
+        enabled: true
         className: external
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
-          - host: files.${SECRET_DOMAIN}
+          - host: &host "files.${SECRET_DOMAIN}"
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
+        tls:
+          - hosts:
+              - *host
 
     persistence:
       data:
