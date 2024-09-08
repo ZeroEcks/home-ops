@@ -10,10 +10,9 @@ spec:
     spec:
       chart: app-template
       version: 3.4.0
-      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: bjw-s-charts
+        name: bjw-s
         namespace: flux-system
   install:
     remediation:
@@ -63,7 +62,7 @@ spec:
               OCIS_LOG_COLOR: true
               OCIS_LOG_LEVEL: info
               OCIS_LOG_PRETTY: true
-              OCIS_URL: https://files.${SECRET_DOMAIN_NAME}
+              OCIS_URL: https://files.${SECRET_DOMAIN}
               PROXY_TLS: false
             envFrom:
               - secretRef:
@@ -97,7 +96,7 @@ spec:
       app:
         className: internal
         hosts:
-          - host: files.${SECRET_DOMAIN_NAME}
+          - host: files.${SECRET_DOMAIN}
             paths:
               - path: /
                 service:
