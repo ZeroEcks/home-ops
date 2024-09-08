@@ -113,10 +113,8 @@ spec:
             readOnly: true
 
       data:
-        enabled: true
-        type: nfs
-        server: ${SECRET_NFS_SERVER} # poke
-        path: ${SECRET_NFS_OCIS}
+        type: persistentVolumeClaim
+        existingClaim: ocis-nfs
         globalMounts:
           - path: /var/lib/ocis
             subPath: data
