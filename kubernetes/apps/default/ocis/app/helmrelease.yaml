@@ -31,12 +31,12 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
-            supplementalGroups: [10000]
+            runAsUser: 1000
+            runAsGroup: 1000
             runAsNonRoot: true
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups: [568, 10000]
 
         initContainers:
           init-config:
@@ -104,14 +104,6 @@ spec:
                   port: http
 
     persistence:
-      config:
-        type: configMap
-        name: ocis-configmap
-        globalMounts:
-          - path: /etc/ocis/web.yaml
-            subPath: web.yaml
-            readOnly: true
-
       data:
         type: persistentVolumeClaim
         existingClaim: ocis-nfs
