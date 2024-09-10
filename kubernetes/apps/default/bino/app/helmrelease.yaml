@@ -27,8 +27,6 @@ spec:
     defaultPodOptions:
       imagePullSecrets:
         - name: dockerconfigjson-github-com
-      securityContext:
-        runAsNonRoot: true
 
     controllers:
       bino:
