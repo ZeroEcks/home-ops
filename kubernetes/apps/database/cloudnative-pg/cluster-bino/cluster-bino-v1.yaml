@@ -52,7 +52,7 @@ spec:
       endpointURL: https://s3.us-east-005.backblazeb2.com
       # Note: serverName version needs to be inclemented
       # when recovering from an existing cnpg cluster
-      serverName: &currentCluster cluster-bino-v1
+      serverName: &currentCluster cluster-bino-v2
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
