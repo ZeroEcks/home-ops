@@ -43,7 +43,7 @@ spec:
           migrate:
             image:
               repository: ghcr.io/zeroecks/bino-next-migrate
-              tag: &binoVersion 22
+              tag: &binoVersion 23
             envFrom: *envFrom
         containers:
           app:
@@ -52,7 +52,6 @@ spec:
               tag: *binoVersion
             envFrom: *envFrom
             env:
-              # AUTH_URL: https://{{ .Release.Name }}.${SECRET_DOMAIN}/api/auth
               AUTH_TRUST_HOST: true
             resources:
               requests:
@@ -76,9 +75,11 @@ spec:
             port: &port 3000
 
     ingress:
-      internal:
+      app:
         enabled: true
-        className: internal
+        className: external
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
