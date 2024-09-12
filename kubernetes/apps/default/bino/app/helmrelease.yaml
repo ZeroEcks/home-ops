@@ -51,6 +51,8 @@ spec:
               repository: ghcr.io/zeroecks/bino-next
               tag: *binoVersion
             envFrom: *envFrom
+            env:
+              AUTH_REDIRECT_PROXY_URL: https://{{ .Release.Name }}.${SECRET_DOMAIN}/api/auth
             resources:
               requests:
                 cpu: 15m
@@ -59,7 +61,7 @@ spec:
               liveness:
                 enabled: true
                 spec:
-                  path: /healthz
+                  path: /api/healthz
                   initialDelaySeconds: 3
                   failureThreshold: 5
                   timeoutSeconds: 2
