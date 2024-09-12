@@ -43,7 +43,7 @@ spec:
           migrate:
             image:
               repository: ghcr.io/zeroecks/bino-next-migrate
-              tag: &binoVersion 19
+              tag: &binoVersion 20
             envFrom: *envFrom
         containers:
           app:
@@ -52,7 +52,8 @@ spec:
               tag: *binoVersion
             envFrom: *envFrom
             env:
-              AUTH_REDIRECT_PROXY_URL: https://{{ .Release.Name }}.${SECRET_DOMAIN}/api/auth
+              # AUTH_URL: https://{{ .Release.Name }}.${SECRET_DOMAIN}/api/auth
+              AUTH_TRUST_HOST: true
             resources:
               requests:
                 cpu: 15m
