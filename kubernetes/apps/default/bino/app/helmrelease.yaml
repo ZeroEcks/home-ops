@@ -43,13 +43,13 @@ spec:
           migrate:
             image:
               repository: ghcr.io/zeroecks/bino-next-migrate
-              tag: 16
+              tag: &binoVersion 18
             envFrom: *envFrom
         containers:
           app:
             image:
               repository: ghcr.io/zeroecks/bino-next
-              tag: 16
+              tag: *binoVersion
             envFrom: *envFrom
             resources:
               requests:
