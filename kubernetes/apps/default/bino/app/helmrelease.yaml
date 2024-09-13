@@ -42,7 +42,7 @@ spec:
           migrate:
             image:
               repository: ghcr.io/zeroecks/bino-next-migrate
-              tag: &binoVersion 39
+              tag: &binoVersion 40
             envFrom: *envFrom
         containers:
           app:
