@@ -36,7 +36,7 @@ spec:
         containers:
           app:
             image:
-              repository: jacobalberty/unifi
+              repository: mbentley/omada-controller
               tag: 5.14.32.2-chromium
               pullPolicy: IfNotPresent
             env:
