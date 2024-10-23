@@ -44,6 +44,7 @@ spec:
       - { sourceLabels: ["cluster"], targetLabel: cnpg_cluster, action: replace }
       - { regex: cluster, action: labeldrop }
   backup:
+    retentionPolicy: 14d
     barmanObjectStore: &barmanObjectStore
       data:
         jobs: 6 # Just seems like a reasonable amount, not to do with cpu.
