@@ -22,5 +22,6 @@ resources:
   - ./sonarr/ks.yaml
   - ./tautulli/ks.yaml
   - ./unifi/ks.yaml
+  - ./omada/ks.yaml
   - ./unpackerr/ks.yaml
   - ./zipline/ks.yaml
