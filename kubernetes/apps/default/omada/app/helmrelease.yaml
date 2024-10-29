@@ -55,7 +55,7 @@ spec:
           http:
             enabled: true
             port: 8043
-            targetPort: 8083
+            targetPort: 8043
             protocol: TCP
       controller:
         controller: omada
