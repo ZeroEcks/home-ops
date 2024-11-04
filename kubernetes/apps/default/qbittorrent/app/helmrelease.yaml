@@ -28,7 +28,6 @@ spec:
   values:
     controllers:
       qbittorrent:
-        replicas: 0
         type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
