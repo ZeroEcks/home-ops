@@ -8,10 +8,12 @@ resources:
   - ./bazarr/ks.yaml
   - ./bino/ks.yaml
   - ./cyberchef/ks.yaml
+  - ./frigate/ks.yaml
   - ./home-assistant/ks.yaml
   - ./lidarr/ks.yaml
   - ./maintainerr/ks.yaml
   - ./ocis/ks.yaml
+  - ./omada/ks.yaml
   - ./overseer/ks.yaml
   - ./plex/ks.yaml
   - ./prowlarr/ks.yaml
@@ -21,7 +23,5 @@ resources:
   - ./sabnzbd/ks.yaml
   - ./sonarr/ks.yaml
   - ./tautulli/ks.yaml
-  # - ./unifi/ks.yaml
-  - ./omada/ks.yaml
   - ./unpackerr/ks.yaml
   - ./zipline/ks.yaml
