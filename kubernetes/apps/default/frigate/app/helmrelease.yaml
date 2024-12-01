@@ -79,15 +79,6 @@ spec:
           frigate:
             app:
               - path: /config
-
-      configfile:
-        type: secret
-        name: frigate-secret
-        advancedMounts:
-          frigate:
-            app:
-              - path: /config/config.yml
-                subPath: config.yml
       recs:
         type: nfs
         server: ${SECRET_NFS_SERVER}
