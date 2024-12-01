@@ -1,0 +1,96 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: frigate
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.3.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controllers:
+      frigate:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/blakeblackshear/frigate
+              tag: 0.14.0-rc1
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+            resources:
+              requests:
+                cpu: 100m
+                memory: 1024Mi
+              limits:
+                memory: 8192Mi
+            securityContext:
+              privileged: true
+
+    service:
+      app:
+        controller: frigate
+        ports:
+          http:
+            port: 5000
+          rtmp:
+            port: 1935
+          rtsp:
+            port: 8554
+
+    ingress:
+      app:
+        className: internal
+        hosts:
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+
+    persistence:
+      config:
+        enabled: true
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: freenas-iscsi-csi
+        size: 1Gi
+        advancedMounts:
+          frigate:
+            app:
+              - path: /config
+
+      configfile:
+        type: secret
+        name: frigate-secret
+        advancedMounts:
+          frigate:
+            app:
+              - path: /config/config.yml
+                subPath: config.yml
+      recs:
+        type: nfs
+        server: ${SCRET_NFS_SERVER}
+        path: ${SECRET_NFS_CCTV}
+        globalMounts:
+          - path: /recs
