@@ -1,8 +1,0 @@
----
-kubernetes:
-  children:
-    master:
-      hosts:
-        "jupiter":
-          ansible_user: "melody"
-          ansible_host: "192.168.1.3"
