@@ -1,0 +1,3 @@
+cloudflare -- @every 60s -- -n 1.1.1.1
+google -- @every 60s -- -n google.com
+router -- @every 60s -- -n 192.168.1.1
