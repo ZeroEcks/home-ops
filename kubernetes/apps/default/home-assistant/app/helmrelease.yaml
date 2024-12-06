@@ -31,6 +31,13 @@ spec:
       home-assistant:
         annotations:
           reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            runAsUser: 65534
+            runAsGroup: 65533
+            fsGroup: 65533
+            fsGroupChangePolicy: OnRootMismatch
+
         containers:
           app:
             image:
@@ -49,26 +56,15 @@ spec:
               startup:
                 enabled: false
             securityContext:
-              privileged: true
-              capabilities:
-                add:
-                  - NET_ADMIN
-                  - NET_RAW
-                  - NET_BROADCAST
+              allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
             resources:
               requests:
                 cpu: 10m
                 memory: 512Mi
-              limits:
-                memory: 1Gi
-        pod:
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            runAsNonRoot: true
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
 
     service:
       app:

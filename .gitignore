@@ -21,3 +21,5 @@ Brewfile.lock.json
 .idea
 # wiki
 wiki
+
+bootstrap/vars/config.yaml
