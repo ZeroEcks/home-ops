@@ -45,12 +45,12 @@ spec:
               QBT_Preferences__WebUI__AuthSubnetWhitelist: |-
                 10.32.0.0/16, 192.168.1.0/24
               QBT_Preferences__WebUI__LocalHostAuth: false
-              QBT_BitTorrent__Session__Interface: wg0
-              QBT_BitTorrent__Session__InterfaceAddress:
-                valueFrom:
-                  fieldRef:
-                    fieldPath: status.podIP
-              QBT_BitTorrent__Session__InterfaceName: eth0
+              # QBT_BitTorrent__Session__Interface: wg0
+              # QBT_BitTorrent__Session__InterfaceAddress:
+              #   valueFrom:
+              #     fieldRef:
+              #       fieldPath: status.podIP
+              # QBT_BitTorrent__Session__InterfaceName: eth0
             resources:
               requests:
                 cpu: 10m
@@ -78,23 +78,23 @@ spec:
               fsGroup: 568
               fsGroupChangePolicy: OnRootMismatch
               supplementalGroups: [10000]
-          gluetun:
-            image:
-              repository: ghcr.io/qdm12/gluetun
-              tag: v3.39.1@sha256:6a8058e626763cbf735ac2f78c774dbb24fec2490bd9d9f7d67e22592cb4a991
-            env:
-              VPN_SERVICE_PROVIDER: airvpn
-              VPN_TYPE: wireguard
-              VPN_INTERFACE: wg0
-              FIREWALL_VPN_INPUT_PORTS: *bittorrentPort
-              FIREWALL_INPUT_PORTS: *port
-              FIREWALL_OUTBOUND_SUBNETS: ${CLUSTER_CIDR},${SERVICE_CIDR}
-            envFrom:
-              - secretRef:
-                  name: qbittorrent
-            securityContext:
-              capabilities: { add: ["NET_ADMIN"] }
-              allowPrivilegeEscalation: false
+          # gluetun:
+          #   image:
+          #     repository: ghcr.io/qdm12/gluetun
+          #     tag: v3.39.1@sha256:6a8058e626763cbf735ac2f78c774dbb24fec2490bd9d9f7d67e22592cb4a991
+          #   env:
+          #     VPN_SERVICE_PROVIDER: airvpn
+          #     VPN_TYPE: wireguard
+          #     VPN_INTERFACE: wg0
+          #     FIREWALL_VPN_INPUT_PORTS: *bittorrentPort
+          #     FIREWALL_INPUT_PORTS: *port
+          #     FIREWALL_OUTBOUND_SUBNETS: ${CLUSTER_CIDR},${SERVICE_CIDR}
+          #   envFrom:
+          #     - secretRef:
+          #         name: qbittorrent
+          #   securityContext:
+          #     capabilities: { add: ["NET_ADMIN"] }
+          #     allowPrivilegeEscalation: false
 
     service:
       app:
