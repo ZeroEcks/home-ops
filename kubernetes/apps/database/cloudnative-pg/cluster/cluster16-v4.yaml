@@ -38,7 +38,7 @@ spec:
         }
       - { regex: cluster, action: labeldrop }
   backup:
-    retentionPolicy: 7d
+    retentionPolicy: 14d
     barmanObjectStore: &barmanObjectStore
       data:
         jobs: 6 # Just seems like a reasonable amount, not to do with cpu.
