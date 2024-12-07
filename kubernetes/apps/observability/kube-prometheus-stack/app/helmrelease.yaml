@@ -120,7 +120,7 @@ spec:
           version: "${THANOS_VERSION#v}"
           objectStorageConfig:
             existingSecret:
-              name: thanos-objstore-backblaze-secret
+              name: thanos-objstore-minio-secret
               key: objstore.yml
         retention: 2d
         retentionSize: 15GB
