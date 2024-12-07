@@ -25,31 +25,31 @@ spec:
 
     # add note here about volume expansion requirements
     storageClasses:
-      - name: freenas-iscsi-csi
-        defaultClass: true
-        reclaimPolicy: Retain
-        volumeBindingMode: Immediate
-        allowVolumeExpansion: true
-        parameters:
-          # for block-based storage can be ext3, ext4, xfs
-          # for nfs should be nfs
-          fsType: xfs
+    - name: freenas-iscsi-csi
+      defaultClass: true
+      reclaimPolicy: Delete
+      volumeBindingMode: Immediate
+      allowVolumeExpansion: true
+      parameters:
+        # for block-based storage can be ext3, ext4, xfs
+        # for nfs should be nfs
+        fsType: xfs
 
-          # if true, volumes created from other snapshots will be
-          # zfs send/received instead of zfs cloned
-          # detachedVolumesFromSnapshots: "false"
+        # if true, volumes created from other snapshots will be
+        # zfs send/received instead of zfs cloned
+        # detachedVolumesFromSnapshots: "false"
 
-          # if true, volumes created from other volumes will be
-          # zfs send/received instead of zfs cloned
-          # detachedVolumesFromVolumes: "false"
+        # if true, volumes created from other volumes will be
+        # zfs send/received instead of zfs cloned
+        # detachedVolumesFromVolumes: "false"
 
-        mountOptions: []
-        secrets:
-          provisioner-secret:
-          controller-publish-secret:
-          node-stage-secret:
-          node-publish-secret:
-          controller-expand-secret:
+      mountOptions: []
+      secrets:
+        provisioner-secret:
+        controller-publish-secret:
+        node-stage-secret:
+        node-publish-secret:
+        controller-expand-secret:
 
     # if your cluster supports snapshots you may enable below
     volumeSnapshotClasses: []
