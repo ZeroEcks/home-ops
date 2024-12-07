@@ -108,6 +108,13 @@ spec:
         storageClass: freenas-iscsi-csi
         size: 1Gi
 
+      incomplete:
+        enabled: true
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: openebs-hostpath
+        size: 180Gi
+
       tmp:
         type: emptyDir
 
