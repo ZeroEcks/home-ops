@@ -59,7 +59,7 @@ spec:
         providers:
           - name: default
             orgId: 1
-            folder: ''
+            folder: ""
             type: file
             disableDeletion: false
             editable: true
@@ -113,21 +113,13 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/thanos
-          - name: unifi
-            orgId: 1
-            folder: Unifi
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/unifi
     datasources:
       datasources.yaml:
         apiVersion: 1
         deleteDatasources:
-          - {name: Alertmanager, orgId: 1}
-          - {name: Loki, orgId: 1}
-          - {name: Prometheus, orgId: 1}
+          - { name: Alertmanager, orgId: 1 }
+          - { name: Loki, orgId: 1 }
+          - { name: Prometheus, orgId: 1 }
         datasources:
           - name: Prometheus
             type: prometheus
@@ -159,13 +151,13 @@ spec:
           gnetId: 16343
           revision: 2
           datasource:
-            - {name: DS_PROMETHEUS, value: Prometheus}
+            - { name: DS_PROMETHEUS, value: Prometheus }
         cloudflared:
           # renovate: depName="Cloudflare Tunnels (cloudflared)"
           gnetId: 17457
           revision: 6
           datasource:
-            - {name: DS_PROMETHEUS, value: Prometheus}
+            - { name: DS_PROMETHEUS, value: Prometheus }
         external-dns:
           # renovate: depName="External-dns"
           gnetId: 15038
@@ -176,7 +168,7 @@ spec:
           gnetId: 13502
           revision: 25
           datasource:
-            - {name: DS_PROMETHEUS, value: Prometheus}
+            - { name: DS_PROMETHEUS, value: Prometheus }
         node-exporter-full:
           # renovate: depName="Node Exporter Full"
           gnetId: 1860
@@ -199,7 +191,7 @@ spec:
           gnetId: 18817
           revision: 1
           datasource:
-            - {name: DS_PROMETHEUS, value: Prometheus}
+            - { name: DS_PROMETHEUS, value: Prometheus }
         zfs:
           # renovate: depName="ZFS"
           gnetId: 7845
@@ -329,7 +321,7 @@ spec:
       dashboards:
         enabled: true
         searchNamespace: ALL
-        labelValue: ''
+        labelValue: ""
         label: grafana_dashboard
         folderAnnotation: grafana_folder
         provider:
@@ -338,7 +330,7 @@ spec:
       datasources:
         enabled: true
         searchNamespace: ALL
-        labelValue: ''
+        labelValue: ""
     plugins:
       - grafana-clock-panel
       - grafana-piechart-panel
@@ -351,7 +343,7 @@ spec:
     ingress:
       enabled: true
       ingressClassName: internal
-      hosts: [&host 'grafana.${SECRET_DOMAIN}']
+      hosts: [&host "grafana.${SECRET_DOMAIN}"]
       tls:
         - hosts: [*host]
     persistence:
