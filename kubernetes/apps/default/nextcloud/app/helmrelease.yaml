@@ -49,6 +49,7 @@ spec:
     collabora:
       enabled: true
       collabora:
+        extra_params: --o:ssl.enable=false --o:ssl.termination=true
         server_name: "collabora.melody.blue"
         aliasgroups:
           - host: "https://nextcloud.melody.blue:443"
