@@ -61,10 +61,8 @@ spec:
         hosts:
           - host: &collaboraHost "collabora.${SECRET_DOMAIN}"
             paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
+            - path: /
+              pathType: ImplementationSpecific
         tls:
           - hosts:
               - *collaboraHost
