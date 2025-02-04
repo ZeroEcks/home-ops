@@ -44,10 +44,10 @@ spec:
     collabora:
       enabled: true
       collabora:
-        server_name: "https://collabora.melody.blue:443"
+        server_name: "collabora.melody.blue"
         aliasgroups:
-          - host: "https://nextcloud.melody.blue:443"
-          - host: "http://nextcloud.svc.default.cluster.local"
+          - host: "nextcloud.melody.blue"
+          - host: "nextcloud.svc.default.cluster.local"
       ingress:
         hosts:
           - host: "collabora.melody.blue"
