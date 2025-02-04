@@ -41,21 +41,33 @@ spec:
     ingress:
       enabled: true
       className: external
+      annotations:
+        external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+      tls:
+        - hosts:
+            - *host
     collabora:
       enabled: true
       collabora:
         server_name: "collabora.melody.blue"
         aliasgroups:
-          - host: "nextcloud.melody.blue"
+          - host: "https://nextcloud.melody.blue:443"
           - host: "nextcloud.svc.default.cluster.local"
       ingress:
-        hosts:
-          - host: "collabora.melody.blue"
-          - paths:
-              - path: /
-                pathType": "ImplementationSpecific"
         enabled: true
         className: external
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+        hosts:
+          - host: &collaboraHost "collabora.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *collaboraHost
     metrics:
       enabled: false
     cronjob:
