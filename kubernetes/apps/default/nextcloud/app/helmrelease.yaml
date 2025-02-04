@@ -24,7 +24,7 @@ spec:
   values:
     podAnnotations: {}
     nextcloud:
-      host: "nextcloud.${SECRET_DOMAIN}"
+      host: &host "nextcloud.${SECRET_DOMAIN}"
       mail:
         enabled: false
     persistence:
@@ -61,8 +61,8 @@ spec:
         hosts:
           - host: &collaboraHost "collabora.${SECRET_DOMAIN}"
             paths:
-            - path: /
-              pathType: ImplementationSpecific
+              - path: /
+                pathType: ImplementationSpecific
         tls:
           - hosts:
               - *collaboraHost
