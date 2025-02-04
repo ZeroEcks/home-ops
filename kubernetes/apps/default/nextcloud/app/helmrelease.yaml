@@ -43,14 +43,17 @@ spec:
       className: external
     collabora:
       enabled: true
+      collabora:
+        server_name: "https://collabora.melody.blue:443"
+        aliasgroups:
+          - host: "https://nextcloud.melody.blue:443"
+          - host: "http://nextcloud.svc.default.cluster.local"
       ingress:
         hosts:
-          [
-            {
-              "host": "collabora.melody.blue",
-              "paths": [{ "path": "/", "pathType": "ImplementationSpecific" }],
-            },
-          ]
+          - host: "collabora.melody.blue"
+          - paths:
+              - path: /
+                pathType": "ImplementationSpecific"
         enabled: true
         className: external
     metrics:
