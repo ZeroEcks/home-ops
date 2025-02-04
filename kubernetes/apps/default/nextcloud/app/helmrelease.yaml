@@ -47,14 +47,8 @@ spec:
         hosts:
           [
             {
-              "host": "nextcloud.melody.blue",
-              "paths":
-                [
-                  {
-                    "path": "/collabora",
-                    "pathType": "ImplementationSpecific",
-                  },
-                ],
+              "host": "collabora.melody.blue",
+              "paths": [{ "path": "/", "pathType": "ImplementationSpecific" }],
             },
           ]
         enabled: true
