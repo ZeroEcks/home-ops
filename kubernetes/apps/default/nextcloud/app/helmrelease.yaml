@@ -1,0 +1,112 @@
+---
+# yaml-language-server: $schema=https://crd.movishell.pl/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nextcloud
+spec:
+  chart:
+    spec:
+      chart: nextcloud
+      version: 6.6.3
+      sourceRef:
+        kind: HelmRepository
+        name: nextcloud
+        namespace: flux-system
+  install:
+    timeout: 60m
+  interval: 30m
+  maxHistory: 3
+  upgrade:
+    timeout: 60m
+  uninstall:
+    keepHistory: false
+  values:
+    deploymentAnnotations:
+      secret.reloader.stakater.com/reload: &secret nextcloud-secret
+    image:
+      flavor: fpm
+    nextcloud:
+      host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+      mail:
+        enabled: false
+    persistence:
+      enabled: true
+      accessMode: ReadWriteOnce
+      storageClass: freenas-iscsi-csi
+      size: 64Gi
+    resources:
+      requests:
+        cpu: 200m
+        memory: 300Mi
+      limits:
+        memory: 2000Mi
+    startupProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 5
+      failureThreshold: 360
+      successThreshold: 1
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 5
+      failureThreshold: 3
+      successThreshold: 1
+    readinessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 5
+      failureThreshold: 3
+      successThreshold: 1
+    ingress:
+      enabled: true
+      className: external
+      hosts:
+        - host: *host
+          paths:
+            - path: /
+              service:
+                identifier: app
+                port: http
+      tls:
+        - hosts:
+            - *host
+    nginx:
+      enabled: true
+      config:
+        headers:
+          "Strict-Transport-Security": "max-age=15768000; includeSubDomains;"
+      resources:
+        requests:
+          cpu: 50m
+          memory: 20Mi
+        limits:
+          memory: 100Mi
+    collabora:
+      enabled: true
+      ingress:
+        enabled: true
+        className: external
+        hosts:
+          - host: "collabora.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+    internalDatabase:
+      enabled: true
+    metrics:
+      enabled: true
+      https: true
+      serviceMonitor:
+        enabled: true
+    cronjob:
+      enabled: true

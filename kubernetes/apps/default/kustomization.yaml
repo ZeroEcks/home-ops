@@ -13,6 +13,7 @@ resources:
   - ./home-assistant/ks.yaml
   - ./lidarr/ks.yaml
   - ./maintainerr/ks.yaml
+  - ./nextcloud/ks.yaml
   - ./omada/ks.yaml
   - ./overseer/ks.yaml
   - ./plex/ks.yaml
