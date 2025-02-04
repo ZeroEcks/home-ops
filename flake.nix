@@ -16,6 +16,7 @@
           inherit system;
         };
         nativeBuildInputs = with pkgs; [
+          kubernetes-helm
           velero
           fluxcd
           sops

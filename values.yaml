@@ -1,0 +1,28 @@
+podAnnotations: {}
+nextcloud:
+  host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
+  mail:
+    enabled: false
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  storageClass: freenas-iscsi-csi
+  size: 64Gi
+resources:
+  requests:
+    cpu: 200m
+    memory: 300Mi
+  limits:
+    memory: 2000Mi
+ingress:
+  enabled: true
+  className: external
+collabora:
+  enabled: true
+  ingress:
+    enabled: true
+    className: external
+metrics:
+  enabled: false
+cronjob:
+  enabled: true
