@@ -18,7 +18,7 @@ spec:
     image:
       repository: ghcr.io/glitch-soc/mastodon
       # renovate: datasource=github-releases depName=glitch-soc/mastodon
-      tag: &version v4.3.6
+      tag: &version v4.3.7
       pullPolicy: IfNotPresent
 
     mastodon:
