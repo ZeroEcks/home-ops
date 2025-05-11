@@ -23,3 +23,5 @@ Brewfile.lock.json
 wiki
 
 bootstrap/vars/config.yaml
+
+.direnv
