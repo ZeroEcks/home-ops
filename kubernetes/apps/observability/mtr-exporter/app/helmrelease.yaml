@@ -29,7 +29,7 @@ spec:
           app:
             image:
               repository: ghcr.io/mgumz/mtr-exporter
-              tag: 0.4.0
+              tag: 0.6.0
             command: ["mtr-exporter", "-jobs", "/jobs.txt"]
             securityContext:
               allowPrivilegeEscalation: false
