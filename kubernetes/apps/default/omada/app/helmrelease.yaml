@@ -37,7 +37,7 @@ spec:
           app:
             image:
               repository: mbentley/omada-controller
-              tag: 5.15.24.17
+              tag: 5.15.24.18
               pullPolicy: IfNotPresent
             env:
               TZ: ${TIMEZONE}
