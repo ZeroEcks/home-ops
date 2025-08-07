@@ -116,7 +116,7 @@ spec:
         replicaCount: 1
       image:
         # renovate: datasource=docker depName=docker.io/bitnami/elasticsearch
-        tag: 7.17.26
+        tag: 9.1.1
 
     postgresql:
       enabled: false
